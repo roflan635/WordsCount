@@ -3,6 +3,24 @@
 
 #include "pch.h"
 #include "Task.h"
+#include <fstream>
+#include <string>
+
+int GetWordsCount(std::string fileName)
+{
+	std::ifstream f(fileName);		//открытие файла
+	//проверка на то, открыт файл или нет
+	if (f)
+	{
+		int count = 0;		//переменная для количества слов
+		//считываем слова из файла
+		std::string word;	
+		while (f >> word)	
+			count++;
+		return count;
+	}
+	else return -1;	//если файл не открылся, вернуть -1 
+}
 
 /*
 	Разместите в данном файле функцию, которая подсчитывает количество слов в текстовом файле. 
